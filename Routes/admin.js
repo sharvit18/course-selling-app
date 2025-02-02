@@ -13,12 +13,12 @@ adminRouter.post("/signin", (req,res)=>{
     })
 })
 
-adminRouter.post("/course",(req,res)=>{
+adminRouter.post("/",(req,res)=>{
     res.json({
         message:"Course creattion endpoint"
     })
 })
-adminRouter.put("/course",(req,res)=>{
+adminRouter.put("/",(req,res)=>{
     res.json({
         message:"Course editior endpoint"
     })
