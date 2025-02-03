@@ -8,8 +8,7 @@ const { adminMiddleware } = require("../middleware/admin");
 
 
 adminRouter.post("/signup", async function(req, res) {
-    const { email, password, firstName, lastName } = req.body; // TODO: adding zod validation
-    
+    const { email, password, firstName, lastName } = req.body; 
     await adminModel.create({
         email: email,
         password: password,
@@ -25,7 +24,7 @@ adminRouter.post("/signup", async function(req, res) {
 adminRouter.post("/signin", async function(req, res) {
     const { email, password } = req.body;
 
-    // TODO: ideally password should be hashed, and hence you cant compare the user provided password and the database password
+    
     const admin = await adminModel.findOne({
         email: email,
         password: password
@@ -36,7 +35,7 @@ adminRouter.post("/signin", async function(req, res) {
             id: admin._id
         }, JWT_ADMIN_PASSWORD);
 
-        // Do cookie logic
+       
 
         res.json({
             token: token
@@ -73,7 +72,7 @@ adminRouter.put("/course", adminMiddleware, async function(req, res) {
 
     const { title, description, imageUrl, price, courseId } = req.body;
 
-    // creating a web3 saas in 6 hours
+    
     const course = await courseModel.updateOne({
         _id: courseId, 
         creatorId: adminId 
